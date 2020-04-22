@@ -1,3 +1,6 @@
+/**
+ * Projeto para mostrar localidades em um map do openstreet map
+ */
 import 'ol/ol.css';
 import {useGeographic} from 'ol/proj';
 import Map from 'ol/Map';
