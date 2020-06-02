@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Bing Maps</title>
+    <title>AGRIMAPP MAPAS</title>
     <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,requestAnimationFrame,Element.prototype.classList,URL"></script>
     <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
@@ -10,15 +10,24 @@
     <style>
       .map {
         width: 100%;
-        height:400px;
+        height:95%;
+        display:table;
+        position:absolute;
       }
     </style>
   </head>
   <body>
-     <h2>
-       Teste de mapas
-     </h2>
      <div id="map" class="map"></div>
+     <div style="position: absolute; text-align: right; width: 100%;">
+     <select id="layer-select">
+      <option value="Aerial">Aerial</option>
+      <option value="AerialWithLabelsOnDemand" selected>Aerial with labels</option>
+      <option value="RoadOnDemand">Road</option>
+      <option value="CanvasDark">Road dark</option>
+      <option value="OrdnanceSurvey">Ordnance Survey</option>
+      <option value="osm">open layers</option>
+    </select>
+  </div>
      <div id="popup"></div>
    
       <script>
@@ -28,17 +37,17 @@
       var farmList =
         [
             {
-              coordinate: [-46.28077, -12.61334],
-              name:"Fazenda São Miguel"
+              coordinate: [-46.34662, -11.84272],
+              name:"Faz. Condomínio Fontana"
             },
             {
-              coordinate: [-46.25077, -12.51334],
-              name:"Fazenda São Miguel2"
+              coordinate: [-46.33436, -11.84009],
+              name:"Faz.Celeste"
             }
             ,
             {
-              coordinate: [-46.25077, -12.59334],
-              name:"Fazenda São Miguel 32"
+              coordinate: [-46.24992, -12.61303],
+              name:"Fazenda São Miguel"
             }
         ]
       

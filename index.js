@@ -1,3 +1,4 @@
+
 import 'ol/ol.css';
 import {useGeographic} from 'ol/proj';
 import Map from 'ol/Map';
@@ -15,7 +16,8 @@ import apply from 'ol-mapbox-style';
 useGeographic();
 
 var  osmLayer = new TileLayer({
-      source: new OSM()
+      source: new OSM(),
+      visible:false
     })
 
 var styles = [
@@ -23,7 +25,8 @@ var styles = [
   'Aerial',
   'AerialWithLabelsOnDemand',
   'CanvasDark',
-  'OrdnanceSurvey'
+  'OrdnanceSurvey',
+  'osm'
 ];
 var layers = [];
 var i, ii;
@@ -73,12 +76,14 @@ var vectorSource = new VectorSource({
 });
 
 var vectorLayer = new VectorLayer({
-  source: vectorSource
+  source: vectorSource,
+  zIndex:10
 });
 
 
 var layers2 = [osmLayer,vectorLayer];
-//layers2.concat(layers)
+//var layers2 = [vectorLayer];
+layers2 = layers2.concat(layers)
 
 
 var map = new Map({
@@ -123,3 +128,20 @@ map.on('pointermove', function(evt) {
     $(element).popover('destroy');
   }
 });
+
+
+
+var select = document.getElementById('layer-select');
+function onChange() {
+  var style = select.value;
+ 
+  for (var i = 0, ii = layers.length; i < ii; ++i) {
+    layers[i].setVisible(styles[i] === style);
+  }
+
+  osmLayer.setVisible(style==='osm')
+  
+}
+
+select.addEventListener('change', onChange);
+onChange();
